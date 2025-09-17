@@ -3,7 +3,7 @@ import random
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 from faker import Faker
-from django_mongodb_demo.polls import Poll, Question, Choice
+from django_mongodb_demo.models import Poll, Question, Choice
 
 
 class Command(BaseCommand):

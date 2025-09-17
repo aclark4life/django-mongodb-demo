@@ -3,7 +3,7 @@ from .polls.models import Poll, Question, Choice, EmbeddedPoll, EmbeddedQuestion
 from .patient.models import Billing, Patient, PatientRecord
 from .sample_mflix.models import Movie, Award
 
-__all__ = ['Poll', 'Question', 'Choice', 'EmbeddedPoll', 'EmbeddedQuestion', 'EmbeddedChoice']
+__all__ = ['Poll', 'Question', 'Choice', 'EmbeddedPoll', 'EmbeddedQuestion', 'EmbeddedChoice', 'Patient', 'PatientRecord', 'Billing', 'Movie', 'Award']
 
 
 class Author(models.Model):
