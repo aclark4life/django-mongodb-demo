@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Author, Article, Comment
-from .polls import Poll, Question, Choice
+
+from .polls.admin import QuestionAdmin, PollAdmin, ChoiceAdmin  # noqa: F401
 
 
 @admin.register(Author)
@@ -17,26 +18,3 @@ class ArticleAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ("article", "user_name", "created_at")
-
-class ChoiceInline(admin.TabularInline):  
-    model = Choice  
-    extra = 2  
-  
-class QuestionInline(admin.TabularInline):  
-    model = Question  
-    extra = 1  
-  
-@admin.register(Poll)  
-class PollAdmin(admin.ModelAdmin):  
-    list_display = ('title', 'pub_date')  
-    inlines = [QuestionInline]  
-  
-@admin.register(Question)  
-class QuestionAdmin(admin.ModelAdmin):  
-    list_display = ('question_text', 'poll')  
-    inlines = [ChoiceInline]  
-  
-@admin.register(Choice)  
-class ChoiceAdmin(admin.ModelAdmin):  
-    list_display = ('choice_text', 'question', 'votes')  
-
