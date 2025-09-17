@@ -3,7 +3,6 @@ from django.utils.text import slugify
 from faker import Faker  
 import random  
   
-# Import models from your app  
 from django_mongodb_demo.models import Author, Article, Comment  
   
   
@@ -80,6 +79,7 @@ class Command(BaseCommand):
                 k = min(len(words_list), random.randint(2, 5))  
                 tags = random.sample(words_list, k=k)  
   
+                # Create article (let auto_now_add set date, then override)  
                 article = Article.objects.create(  
                     title=title,  
                     slug=slug_candidate,  
@@ -87,15 +87,28 @@ class Command(BaseCommand):
                     tags=tags,  
                     content="\n\n".join(fake.paragraphs(nb=random.randint(3, 7))),  
                 )  
+  
+                # Assign random past date for published_at  
+                article.published_at = fake.date_time_between(  
+                    start_date="-1y", end_date="now"  
+                )  
+                article.save(update_fields=["published_at"])  
+  
                 total_articles += 1  
   
                 # Create comments for the article  
                 for _ in range(num_comments):  
-                    Comment.objects.create(  
+                    comment = Comment.objects.create(  
                         article=article,  
                         user_name=fake.name(),  
                         text=fake.paragraph(nb_sentences=3),  
                     )  
+                    # Assign random date after article was published  
+                    comment.created_at = fake.date_time_between(  
+                        start_date=article.published_at, end_date="now"  
+                    )  
+                    comment.save(update_fields=["created_at"])  
+  
                     total_comments += 1  
   
         self.stdout.write(  
