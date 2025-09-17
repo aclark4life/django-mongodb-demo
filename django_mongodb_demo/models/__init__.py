@@ -1,4 +1,7 @@
 from django.db import models
+from .polls.models import Poll, Question, Choice, EmbeddedPoll, EmbeddedQuestion, EmbeddedChoice
+
+__all__ = ['Poll', 'Question', 'Choice', 'EmbeddedPoll', 'EmbeddedQuestion', 'EmbeddedChoice']
 
 
 class Author(models.Model):

@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models import Author, Article, Comment
 
-from .polls.admin import QuestionAdmin, PollAdmin, ChoiceAdmin  # noqa: F401
+from .models.polls.admin import QuestionAdmin, PollAdmin, ChoiceAdmin  # noqa: F401
 # from .sample_mflix.admin import MovieAdmin, ActorAdmin, CommentAdmin, UserAdmin  # noqa: F401  
-from .sample_mflix.admin import MovieAdmin
+from .models.sample_mflix.admin import MovieAdmin
 
 
 @admin.register(Author)
