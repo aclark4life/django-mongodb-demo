@@ -4,7 +4,7 @@ from .models import Author, Article, Comment
 from .models.polls.admin import QuestionAdmin, PollAdmin, ChoiceAdmin  # noqa: F401
 # from .sample_mflix.admin import MovieAdmin, ActorAdmin, CommentAdmin, UserAdmin  # noqa: F401  
 from .models.sample_mflix.admin import MovieAdmin
-from .models.patient.admin import PatientAdmin, PatientRecordAdmin, BillingAdmin  # noqa: F401
+from .models.qe.admin import PatientAdmin  # noqa: F401
 
 from django.utils.html import format_html_join  
 from django.utils.safestring import mark_safe  
