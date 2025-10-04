@@ -47,7 +47,7 @@ class Command(BaseCommand):
             record = PatientRecord(  
                 ssn=fake.ssn(),  
                 billing=billing,  
-                billAmount=round(random.uniform(50.0, 5000.0), 2)  
+                bill_amount=round(random.uniform(50.0, 5000.0), 2)  
             )  
   
             # Create Patient  
@@ -62,7 +62,7 @@ class Command(BaseCommand):
             self.stdout.write(f"  SSN: {record.ssn}")  
             self.stdout.write(f"  Billing CC Type: {billing.cc_type}")  
             self.stdout.write(f"  Billing CC Number: {billing.cc_number}")  
-            self.stdout.write(f"  Bill Amount: ${record.billAmount}")  
+            self.stdout.write(f"  Bill Amount: ${record.bill_amount}")  
   
         self.stdout.write(  
             self.style.SUCCESS(  
