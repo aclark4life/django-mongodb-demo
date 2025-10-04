@@ -19,7 +19,7 @@ class Patient(models.Model):
 class PatientRecord(EmbeddedModel):
     ssn = EncryptedCharField(max_length=11)
     billing = EncryptedEmbeddedModelField("Billing")
-    # bill_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    bill_amount = models.DecimalField(max_digits=10, decimal_places=2)
 
 
 class Billing(EmbeddedModel):
