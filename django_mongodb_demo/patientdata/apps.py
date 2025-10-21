@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PatientdataConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
+class PatientDataConfig(AppConfig):
+    default_auto_field = "django_mongodb_backend.fields.ObjectIdAutoField"
     name = "patientdata"
